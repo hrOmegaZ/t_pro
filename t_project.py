@@ -15,10 +15,10 @@ name = input('Name: ')
 month = input('year or month: ')
 while month != 'year' and month != 'month':
     print('Try again.')
-    month = input('year or month (lowercase): ')
+    month = input(f'{name}, would you like to view the year or month (lowercase)? ')
 if month == 'month':
     while True:
-        i_month = input('Which month would you like to see (month name): ')
+        i_month = input('Which month would you like to see (month name)? ')
         if i_month not in months:
             print('Try again')
         else:
