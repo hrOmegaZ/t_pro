@@ -17,12 +17,12 @@ while month != 'year' and month != 'month':
     print('Try again.')
     month = input('year or month (lowercase): ')
 if month == 'month':
-    i_month = input('Which month would you like to see (month name): ')
-    if i_month not in months:
-        print('Try again')
+    while True:
         i_month = input('Which month would you like to see (month name): ')
-    else:
-        pass
+        if i_month not in months:
+            print('Try again')
+        else:
+            break
 else:
     pass
 category = input('Choose from- TMAX, TMIN, wind speed, humidity, rain totals: ')
@@ -76,7 +76,7 @@ with open("2016VizData.csv", newline='') as csvfile:
     for row in reader:
         for x in range(len(channel)):
             if month == 'month':
-                if row['MONTH'] == months.index('January'):
+                if row['MONTH'] == str(months.index(i_month) + 1):
                     if float(row['TMAX']) > 200 or float(row['TMAX']) < -200:
                         pass
                     else:
@@ -164,6 +164,8 @@ with open("2016VizData.csv", newline='') as csvfile:
                                 TISHr.append((float(row["RAIN"])))
                             elif x == 4:
                                 TULNr.append((float(row["RAIN"])))
+                else:
+                    print('no')
             else:
                 #Temp Max and Min
                 if float(row['TMAX']) > 200 or float(row['TMAX']) < -200:
@@ -257,23 +259,23 @@ with open("2016VizData.csv", newline='') as csvfile:
 if category == 'TMAX':
     x = []
     for lel in range(len(ALTUm)):
-        x.append(lel)
+        x.append(int(lel) + 1)
     y = ALTUm
     x1 = []
     for lel in range(len(BEAVm)):
-        x1.append(lel)
+        x1.append(int(lel) + 1)
     y1 = BEAVm
     x2 = []
     for lel in range(len(NRMNm)):
-        x2.append(lel)
+        x2.append(int(lel) + 1)
     y2 = NRMNm
     x3 = []
     for lel in range(len(TISHm)):
-        x3.append(lel)
+        x3.append(int(lel) + 1)
     y3 = TISHm
     x4 = []
     for lel in range(len(TULNm)):
-        x4.append(lel)
+        x4.append(int(lel) + 1)
     y4 = TULNm
 
     plt.plot(x, y, label='ALTU')
@@ -292,23 +294,23 @@ if category == 'TMAX':
 elif category == 'TMIN':
     x = []
     for lel in range(len(ALTU)):
-        x.append(lel)
+        x.append(int(lel) + 1)
     y = ALTU
     x1 = []
     for lel in range(len(BEAV)):
-        x1.append(lel)
+        x1.append(int(lel) + 1)
     y1 = BEAV
     x2 = []
     for lel in range(len(NRMN)):
-        x2.append(lel)
+        x2.append(int(lel) + 1)
     y2 = NRMN
     x3 = []
     for lel in range(len(TISH)):
-        x3.append(lel)
+        x3.append(int(lel) + 1)
     y3 = TISH
     x4 = []
     for lel in range(len(TULN)):
-        x4.append(lel)
+        x4.append(int(lel) + 1)
     y4 = TULN
 
     plt.plot(x, y, label='ALTU')
@@ -327,44 +329,44 @@ elif category == 'TMIN':
 elif category == 'wind speed':
     x = []
     for lel in range(len(ALTUWSmx)):
-        x.append(lel)
+        x.append(int(lel) + 1)
     y = ALTUWSmx
     x1 = []
     for lel in range(len(BEAVWSmx)):
-        x1.append(lel)
+        x1.append(int(lel) + 1)
     y1 = BEAVWSmx
     x2 = []
     for lel in range(len(NRMNWSmx)):
-        x2.append(lel)
+        x2.append(int(lel) + 1)
     y2 = NRMNWSmx
     x3 = []
     for lel in range(len(TISHWSmx)):
-        x3.append(lel)
+        x3.append(int(lel) + 1)
     y3 = TISHWSmx
     x4 = []
     for lel in range(len(TULNWSmx)):
-        x4.append(lel)
+        x4.append(int(lel) + 1)
     y4 = TULNWSmx
 
     x5 = []
     for lel in range(len(ALTUWSmn)):
-        x5.append(lel)
+        x5.append(int(lel) + 1)
     y5 = ALTUWSmn
     x6 = []
     for lel in range(len(BEAVWSmn)):
-        x6.append(lel)
+        x6.append(int(lel) + 1)
     y6 = BEAVWSmn
     x7 = []
     for lel in range(len(NRMNWSmn)):
-        x7.append(lel)
+        x7.append(int(lel) + 1)
     y7 = NRMNWSmn
     x8 = []
     for lel in range(len(TISHWSmn)):
-        x8.append(lel)
+        x8.append(int(lel) + 1)
     y8 = TISHWSmn
     x9 = []
     for lel in range(len(TULNWSmn)):
-        x9.append(lel)
+        x9.append(int(lel) + 1)
     y9 = TULNWSmn
 
     plt.plot(x, y, label='ALTUmx')
@@ -389,23 +391,24 @@ elif category == 'wind speed':
 elif category == 'humidity':
     x = []
     for lel in range(len(ALTUh)):
-        x.append(lel)
+        x.append(int(lel) + 1)
+    
     y = ALTUh
     x1 = []
     for lel in range(len(BEAVh)):
-        x1.append(lel)
+        x1.append(int(lel) + 1)
     y1 = BEAVh
     x2 = []
     for lel in range(len(NRMNh)):
-        x2.append(lel)
+        x2.append(int(lel) + 1)
     y2 = NRMNh
     x3 = []
     for lel in range(len(TISHh)):
-        x3.append(lel)
+        x3.append(int(lel) + 1)
     y3 = TISHh
     x4 = []
     for lel in range(len(TULNh)):
-        x4.append(lel)
+        x4.append(int(lel) + 1)
     y4 = TULNh
 
     plt.plot(x, y, label='ALTU')
@@ -424,23 +427,23 @@ elif category == 'humidity':
 elif category == 'rain totals':
     x = []
     for lel in range(len(ALTUr)):
-        x.append(lel)
+        x.append(int(lel) + 1)
     y = ALTUr
     x1 = []
     for lel in range(len(BEAVr)):
-        x1.append(lel)
+        x1.append(int(lel) + 1)
     y1 = BEAVr
     x2 = []
     for lel in range(len(NRMNr)):
-        x2.append(lel)
+        x2.append(int(lel) + 1)
     y2 = NRMNr
     x3 = []
     for lel in range(len(TISHr)):
-        x3.append(lel)
+        x3.append(int(lel) + 1)
     y3 = TISHr
     x4 = []
     for lel in range(len(TULNr)):
-        x4.append(lel)
+        x4.append(int(lel) + 1)
     y4 = TULNr
 
     plt.plot(x, y, label='ALTU')
